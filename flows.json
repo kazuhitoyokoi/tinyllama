@@ -1,0 +1,263 @@
+[
+    {
+        "id": "207805754c0a9258",
+        "type": "tab",
+        "label": "フロー 1",
+        "disabled": false,
+        "info": "",
+        "env": []
+    },
+    {
+        "id": "a76153676feaf33d",
+        "type": "ui-group",
+        "name": "グループ名",
+        "page": "acda7326cf2493b1",
+        "width": "6",
+        "height": "1",
+        "order": -1,
+        "showTitle": false,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "acda7326cf2493b1",
+        "type": "ui-page",
+        "name": "TinyLlama Demo",
+        "ui": "002669b6fc59c916",
+        "path": "/page1",
+        "icon": "home",
+        "layout": "grid",
+        "theme": "a32c3541fc378daf",
+        "order": -1,
+        "className": "",
+        "visible": "true",
+        "disabled": "false"
+    },
+    {
+        "id": "002669b6fc59c916",
+        "type": "ui-base",
+        "name": "画面名",
+        "path": "/dashboard",
+        "includeClientData": true,
+        "acceptsClientConfig": [
+            "ui-notification",
+            "ui-control"
+        ],
+        "showPathInSidebar": false
+    },
+    {
+        "id": "a32c3541fc378daf",
+        "type": "ui-theme",
+        "name": "テーマ名",
+        "colors": {
+            "surface": "#ffffff",
+            "primary": "#0094ce",
+            "bgPage": "#eeeeee",
+            "groupBg": "#ffffff",
+            "groupOutline": "#cccccc"
+        },
+        "sizes": {
+            "pagePadding": "12px",
+            "groupGap": "12px",
+            "groupBorderRadius": "4px",
+            "widgetGap": "12px"
+        }
+    },
+    {
+        "id": "bedca4c12eef79c0",
+        "type": "exec",
+        "z": "207805754c0a9258",
+        "command": "/home/pi/llama2/bin/python -u /home/pi/llama2.py",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "llama2.py",
+        "x": 360,
+        "y": 60,
+        "wires": [
+            [
+                "7a9303cc87bfd986"
+            ],
+            [],
+            []
+        ]
+    },
+    {
+        "id": "6e511a34810f72b2",
+        "type": "ui-template",
+        "z": "207805754c0a9258",
+        "group": "a76153676feaf33d",
+        "page": "",
+        "ui": "",
+        "name": "",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "head": "",
+        "format": "<template>\n  <v-timeline class=\"overflow-y-auto\" style=\"max-height:400px\">\n    <v-timeline-item v-for=\"item in msg.payload\">\n      <template v-slot:icon>\n        <v-avatar v-bind:image=\"item.image\"></v-avatar>\n      </template>\n      <v-alert>{{item.message}}</v-alert>\n    </v-timeline-item>\n  </v-timeline>\n</template>",
+        "storeOutMessages": true,
+        "passthru": true,
+        "resendOnRefresh": true,
+        "templateScope": "local",
+        "className": "",
+        "x": 700,
+        "y": 120,
+        "wires": [
+            []
+        ]
+    },
+    {
+        "id": "88700a769c7da507",
+        "type": "ui-text-input",
+        "z": "207805754c0a9258",
+        "group": "a76153676feaf33d",
+        "name": "",
+        "label": "prompt",
+        "order": 0,
+        "width": 0,
+        "height": 0,
+        "topic": "topic",
+        "topicType": "msg",
+        "mode": "text",
+        "delay": 300,
+        "passthru": true,
+        "sendOnDelay": false,
+        "sendOnBlur": true,
+        "sendOnEnter": true,
+        "className": "",
+        "x": 220,
+        "y": 120,
+        "wires": [
+            [
+                "76ad0adab97f0adc",
+                "bedca4c12eef79c0"
+            ]
+        ]
+    },
+    {
+        "id": "76ad0adab97f0adc",
+        "type": "function",
+        "z": "207805754c0a9258",
+        "name": "function 1",
+        "func": "var tmp = flow.get('data') || [];\ntmp.push({ image: \"https://nodered.jp/images/yokoi.jpg\", message: msg.payload });\nflow.set('data', tmp);\nmsg.payload = tmp;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 120,
+        "wires": [
+            [
+                "6e511a34810f72b2"
+            ]
+        ]
+    },
+    {
+        "id": "53ba03229cc06f99",
+        "type": "inject",
+        "z": "207805754c0a9258",
+        "name": "",
+        "props": [
+            {
+                "p": "payload"
+            },
+            {
+                "p": "topic",
+                "vt": "str"
+            }
+        ],
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": 0.1,
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "x": 300,
+        "y": 240,
+        "wires": [
+            [
+                "de73754bc4043f06"
+            ]
+        ]
+    },
+    {
+        "id": "de73754bc4043f06",
+        "type": "change",
+        "z": "207805754c0a9258",
+        "name": "",
+        "rules": [
+            {
+                "t": "delete",
+                "p": "data",
+                "pt": "flow"
+            }
+        ],
+        "action": "",
+        "property": "",
+        "from": "",
+        "to": "",
+        "reg": false,
+        "x": 500,
+        "y": 180,
+        "wires": [
+            [
+                "6e511a34810f72b2"
+            ]
+        ]
+    },
+    {
+        "id": "7a9303cc87bfd986",
+        "type": "function",
+        "z": "207805754c0a9258",
+        "name": "function 2",
+        "func": "var tmp = flow.get('data') || [];\ntmp.push({ image: \"https://2.bp.blogspot.com/-H2eLSLfzvpA/XGjx1UapC6I/AAAAAAABRcA/5Xdh-W7tqk8X1YONndv2B1ykhJ6BRS1bgCLcBGAs/s800/ai_computer_sousa_robot.png\", message: msg.payload });\nflow.set('data', tmp);\nmsg.payload = tmp;\nreturn msg;",
+        "outputs": 1,
+        "timeout": 0,
+        "noerr": 0,
+        "initialize": "",
+        "finalize": "",
+        "libs": [],
+        "x": 520,
+        "y": 60,
+        "wires": [
+            [
+                "6e511a34810f72b2"
+            ]
+        ]
+    },
+    {
+        "id": "2b5f8a51f79c1da1",
+        "type": "ui-button",
+        "z": "207805754c0a9258",
+        "group": "a76153676feaf33d",
+        "name": "",
+        "label": "clear",
+        "order": 0,
+        "width": "1",
+        "height": "1",
+        "passthru": false,
+        "tooltip": "",
+        "color": "",
+        "bgcolor": "",
+        "className": "",
+        "icon": "",
+        "payload": "",
+        "payloadType": "str",
+        "topic": "topic",
+        "topicType": "msg",
+        "x": 330,
+        "y": 180,
+        "wires": [
+            [
+                "de73754bc4043f06"
+            ]
+        ]
+    }
+]
