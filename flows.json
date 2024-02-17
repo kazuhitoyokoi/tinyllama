@@ -68,7 +68,7 @@
         "id": "bedca4c12eef79c0",
         "type": "exec",
         "z": "207805754c0a9258",
-        "command": "/home/pi/llama2/bin/python -u /home/pi/llama2.py",
+        "command": "/home/pi/llama2/bin/python -u /home/pi/llama3.py",
         "addpay": "payload",
         "append": "",
         "useSpawn": "false",
