@@ -134,8 +134,7 @@
         "wires": [
             [
                 "76ad0adab97f0adc",
-                "bedca4c12eef79c0",
-                "cfe55cf26d9a935b"
+                "bedca4c12eef79c0"
             ]
         ]
     },
@@ -262,19 +261,23 @@
         ]
     },
     {
-        "id": "cfe55cf26d9a935b",
-        "type": "debug",
+        "id": "cf399399974f25b9",
+        "type": "exec",
         "z": "207805754c0a9258",
-        "name": "debug 1",
-        "active": true,
-        "tosidebar": true,
-        "console": false,
-        "tostatus": false,
-        "complete": "false",
-        "statusVal": "",
-        "statusType": "auto",
-        "x": 520,
-        "y": 300,
-        "wires": []
+        "command": "echo",
+        "addpay": "payload",
+        "append": "",
+        "useSpawn": "false",
+        "timer": "",
+        "winHide": false,
+        "oldrc": false,
+        "name": "llama2.py",
+        "x": 420,
+        "y": 420,
+        "wires": [
+            [],
+            [],
+            []
+        ]
     }
 ]
