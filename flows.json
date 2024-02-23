@@ -49,7 +49,7 @@
     {
         "id": "a32c3541fc378daf",
         "type": "ui-theme",
-        "name": "テーマ名",
+        "name": "Theme name",
         "colors": {
             "surface": "#ffffff",
             "primary": "#0094ce",
