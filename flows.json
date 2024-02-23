@@ -2,7 +2,7 @@
     {
         "id": "207805754c0a9258",
         "type": "tab",
-        "label": "フロー 1",
+        "label": "Flow 1",
         "disabled": false,
         "info": "",
         "env": []
@@ -10,7 +10,7 @@
     {
         "id": "a76153676feaf33d",
         "type": "ui-group",
-        "name": "グループ名",
+        "name": "Group name",
         "page": "acda7326cf2493b1",
         "width": "6",
         "height": "1",
@@ -37,7 +37,7 @@
     {
         "id": "002669b6fc59c916",
         "type": "ui-base",
-        "name": "画面名",
+        "name": "Layout",
         "path": "/dashboard",
         "includeClientData": true,
         "acceptsClientConfig": [
