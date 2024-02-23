@@ -10,7 +10,7 @@
     {
         "id": "a76153676feaf33d",
         "type": "ui-group",
-        "name": "Group name",
+        "name": "Group",
         "page": "acda7326cf2493b1",
         "width": "6",
         "height": "1",
@@ -49,7 +49,7 @@
     {
         "id": "a32c3541fc378daf",
         "type": "ui-theme",
-        "name": "Theme name",
+        "name": "Theme",
         "colors": {
             "surface": "#ffffff",
             "primary": "#0094ce",
